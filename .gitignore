@@ -34,3 +34,11 @@ override.tf.json
 terraform.rc
 /.idea/
 .terraform.lock.hcl
+
+
+mykey
+mykey.pub
+mykeypair
+mykeypair.pub
+keypair
+keypair.pub
