@@ -1,5 +1,6 @@
 resource "aws_iam_role" "s3_bucket_role" {
   name               = "s3_bucket_role"
+  managed_policy_arns = [data.aws_iam_policy.allow-list-s3-object.arn]
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -36,12 +37,18 @@ resource "aws_iam_role_policy" "s3_bucket_role_policy" {
               "s3:*"
             ],
             "Resource": [
-              "arn:aws:s3:::mybucket-c29df1",
-              "arn:aws:s3:::mybucket-c29df1/*"
+              "arn:aws:s3:::${aws_s3_bucket.mybucket-stevenyin-wi1n25.bucket}",
+              "arn:aws:s3:::${aws_s3_bucket.mybucket-stevenyin-wi1n25.bucket}/*"
             ]
         }
     ]
 }
 EOF
 
+}
+
+data "aws_partition" "current" {}
+
+data "aws_iam_policy" "allow-list-s3-object" {
+  arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
