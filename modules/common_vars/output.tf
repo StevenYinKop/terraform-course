@@ -21,3 +21,11 @@ output "public_key_file" {
 output "image_id" {
   value = var.AMIs[var.AWS_REGION]
 }
+
+output "environment" {
+  value = var.ENVIRONMENT
+}
+
+output "rds_password" {
+  value = var.RDS_PASSWORD
+}

@@ -23,3 +23,11 @@ variable "INSTANCE_DEVICE_NAME" {
 variable "PUBLIC_KEY_FILE" {
   default = "./keys/mykey.pub"
 }
+
+variable "ENVIRONMENT" {
+  default = "test"
+}
+
+variable "RDS_PASSWORD" {
+  default = ""
+}
