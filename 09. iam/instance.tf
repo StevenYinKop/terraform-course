@@ -13,6 +13,8 @@ resource "aws_instance" "example" {
 
   # role:
   iam_instance_profile = aws_iam_instance_profile.s3_bucket_role_instance_profile.name
+
+  user_data = file("./scripts/install-aws-cli.sh")
 }
 
 resource "aws_key_pair" "mykeypair" {
